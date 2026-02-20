@@ -4,7 +4,8 @@ import { User } from "./user.model";
 const companySchema = new mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:true,
+        unique: true
     },
     description:{
         type:String
