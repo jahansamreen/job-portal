@@ -8,7 +8,7 @@ export const registerCompany = async  (req,res)=>{
                 success: false
             });
         }
-        let company= await Company.finOne({name: companyName});
+        let company= await Company.findOne({name: companyName});
         if(company){
             return res.status(400).json({
                 message:"You cann't register same company",
@@ -39,6 +39,10 @@ export const getCompany = async(req,res)=>{
                 success: false
             })
         }
+        return res.status(200).json({
+            companies,
+            success: true,
+        })
     }catch(error){
         console.log(error);
     }
@@ -68,7 +72,7 @@ export const updateCompany =async(req,res)=>{
         const file=req.file
         // cloudinary se aaega file
         const updatedData={name,description, website,location};
-        const company=await Company.findByIdAndUpdate(req,params.id,updatedData,{new: true} );
+        const company=await Company.findByIdAndUpdate(req.params.id,updatedData,{new: true} );
 
         if(!company){
             return res.status(404).json({
