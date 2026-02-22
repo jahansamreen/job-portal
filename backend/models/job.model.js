@@ -24,12 +24,16 @@ const jobSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    experience:{
+        type: Number,
+        required: true
+    },
     position:{
         type: Number,
         required: true
     },
     company:{
-        type: mongoose.Schema.Types.ObjectId, ref:Company,
+        type: mongoose.Schema.Types.ObjectId, ref:'Company',
         required: true,
         
     },
